@@ -6,7 +6,7 @@ import {
     useColorModeValue as mode,
 } from "@chakra-ui/react";
 import { ProductPrice } from "../../../Product/ui/ProductPrice/ProductPrice";
-import { Product } from "../../../Product/model/types/productSchema";
+import { ProductSchema } from "../../../Product/model/types/productSchema";
 
 type OrderSummaryItemProps = {
     label: string;
@@ -14,7 +14,7 @@ type OrderSummaryItemProps = {
     children?: React.ReactNode;
 };
 interface CartOrderSummaryProps {
-    products: Product[];
+    products: ProductSchema[];
 }
 
 const OrderSummaryItem = (props: OrderSummaryItemProps) => {
@@ -48,7 +48,7 @@ export const CartOrderSummary = (props: CartOrderSummaryProps) => {
                 />
                 <Flex justify="space-between">
                     <Text fontSize="lg" fontWeight="semibold">
-                        Total
+                        Total Items
                     </Text>
                     <Text fontSize="xl" fontWeight="extrabold">
                         {ProductPrice(products.length)}

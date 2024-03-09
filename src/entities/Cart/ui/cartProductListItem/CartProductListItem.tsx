@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { Button, Grid, GridItem, Image } from "@chakra-ui/react";
 import { Product } from "../../../Product/model/types/productSchema";
-import { deleteFromCart } from "../../../Profile/model/profileSlice";
+import { deleteFromCart } from "../../../Profile/model/slice/profileSlice";
 
 import CardComponent, {
     CardVariants,

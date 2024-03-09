@@ -4,28 +4,23 @@ import { ProfileCard } from "../../entities/Profile";
 import { useGetUserProfileQuery } from "../../app/api/apiSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../entities/Profile/model/profileSlice";
+import { setUser } from "../../entities/Profile/model/slice/profileSlice";
 import { useParams } from "react-router-dom";
 import { OrderList } from "../../entities/Order/ui/OrderList/OrderList";
 
 const ProfilePage = () => {
-    const dispatch = useDispatch()
-    const { id } = useParams()
-    const {
-        data,
-        isLoading,
-        isSuccess,
-        isError,
-        error,
-    } = useGetUserProfileQuery(id);
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const { data, isLoading, isSuccess, isError, error } =
+        useGetUserProfileQuery(id);
 
     useEffect(() => {
-        if(data){
-            dispatch(setUser(data))
+        if (data) {
+            dispatch(setUser(data));
         }
-    }, [data, dispatch])
+    }, [data, dispatch]);
 
-    console.log(data)
+    console.log(data);
 
     let content = <div></div>;
 
@@ -41,24 +36,21 @@ const ProfilePage = () => {
         content = (
             <Grid templateColumns="repeat(12, 1fr)" gap={4}>
                 <GridItem colSpan={3}>
-                    <ProfileCard 
+                    <ProfileCard
                         username={data.name}
                         email={data.email}
                         role={data.role}
-                        createdAt={data.createdAt} 
+                        createdAt={data.createdAt}
                     />
-                </ GridItem>    
+                </GridItem>
                 <GridItem colSpan={9}>
                     <OrderList orders={data.orders} />
                 </GridItem>
-            </ Grid>
-        )
+            </Grid>
+        );
     }
 
-    return (
-        content
-    )
-    
+    return content;
 };
 
 export default ProfilePage;

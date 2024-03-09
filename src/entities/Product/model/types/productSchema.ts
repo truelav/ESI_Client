@@ -1,5 +1,5 @@
 export interface ProductSchema {
-    _id?: string;
+    _id: string;
     name: string;
     brand: string;
     updatedAt: string;
@@ -23,10 +23,6 @@ export interface ProductsAPIData extends ProductSchema {
     allProducts: ProductSchema[];
     categories: filterCategory[];
 }
-
-export interface GroupedProducts {}
-
-//need to add active and inactive property to users and products
 
 export interface ProductImage {
     link: "string";

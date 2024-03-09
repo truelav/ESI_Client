@@ -2,11 +2,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignupUserType } from "../../components/forms/SignupForm/model/types";
 import {
-    Product,
+    ProductSchema,
     ProductsAPIData,
     GroupedProducts,
 } from "../../entities/Product/model/types/productSchema";
-import { UserData } from "../../entities/Profile/model/profile.types";
+import { UserData } from "../../entities/Profile/model/types/ProfileSchema";
 import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
 import { Order } from "./types/Cart/Order";
 // import { GroupedProducts } from "./types/Product";
@@ -42,7 +42,7 @@ export const apiSlice = createApi({
             providesTags: ["Product"],
         }),
 
-        getSingleProduct: builder.query<Product, string | undefined>({
+        getSingleProduct: builder.query<ProductSchema, string | undefined>({
             query: (id) => `/products/${id}`,
         }),
 
@@ -66,8 +66,8 @@ export const apiSlice = createApi({
         }),
 
         editSingleProduct: builder.mutation<
-            Product,
-            Partial<Product> & Pick<Product, "_id">
+            ProductSchema,
+            Partial<ProductSchema> & Pick<ProductSchema, "_id">
         >({
             query: (product) => ({
                 url: `/products/${product._id}`,

@@ -1,7 +1,7 @@
 import { Button, Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Product } from "../../../entities/Product/model/types/productSchema";
-import { addToCart } from "../../../entities/Profile/model/profileSlice";
+import { addToCart } from "../../../entities/Profile/model/slice/profileSlice";
 
 interface AddToCartProps {
     product: Product;

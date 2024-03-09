@@ -4,7 +4,7 @@ import CardComponent, {
     CardVariants,
 } from "../../../../shared/ui/Product/Card/CardComponent";
 import { CardTextComponent } from "../../../../shared/ui/Product/Card/CardText";
-import { clearCart } from "../../../Profile/model/profileSlice";
+import { clearCart } from "../../../Profile/model/slice/profileSlice";
 
 export const CartListHeader = () => {
     const dispatch = useDispatch();
