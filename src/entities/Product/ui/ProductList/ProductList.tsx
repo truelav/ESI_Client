@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
-import { Product } from "../../model/types/productSchema";
+import { ProductSchema } from "../../model/types/productSchema";
 import { ProductListItem } from "../ProductListItem/ProductListItem";
 import {
     updateProductsBySearchTerm,
@@ -10,7 +10,7 @@ import {
 } from "../../model/service/filterSortAndSearchProduct";
 
 const ProductList = (props: {
-    products: Product[] | never[];
+    products: ProductSchema[] | never[];
     searchTerm: string;
 }) => {
     const { products, searchTerm } = props;
@@ -56,7 +56,7 @@ const ProductList = (props: {
         <>
             <h2>Product List: </h2>
             <div>
-                {filteredAndSortedProducts.map((product: Product) => (
+                {filteredAndSortedProducts.map((product: ProductSchema) => (
                     <ProductListItem key={"" + product._id} product={product} />
                 ))}
             </div>

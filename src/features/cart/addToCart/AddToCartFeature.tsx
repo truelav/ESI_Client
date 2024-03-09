@@ -1,19 +1,19 @@
 import { Button, Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { Product } from "../../../entities/Product/model/types/productSchema";
+import { ProductSchema } from "../../../entities/Product/model/types/productSchema";
 import { addToCart } from "../../../entities/Profile/model/slice/profileSlice";
 
 interface AddToCartProps {
-    product: Product;
+    product: ProductSchema;
 }
 
 const AddToCart = (props: AddToCartProps) => {
     const { product } = props;
     const dispatch = useDispatch();
-    const cart = useSelector((state) => state.profile.cart);
+    const cart = useSelector((state) => state.profile.cart.products);
     const isProductsInCart = cart.includes(product);
 
-    const handleAddToCart = (product: Product) => {
+    const handleAddToCart = (product: ProductSchema) => {
         dispatch(addToCart(product));
     };
 

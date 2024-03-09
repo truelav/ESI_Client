@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid, GridItem, Image, Box, Flex } from "@chakra-ui/react";
 
-import { ProductView, Product } from "../../model/types/productSchema";
+import { ProductView, ProductSchema } from "../../model/types/productSchema";
 import CardComponent, {
     CardVariants,
 } from "../../../../shared/ui/Product/Card/CardComponent";
@@ -13,7 +13,7 @@ import AddToCart from "../../../../features/cart/addToCart/AddToCartFeature";
 
 interface ProductListPropsItem {
     className?: string;
-    product: Product;
+    product: ProductSchema;
     view?: ProductView;
 }
 
