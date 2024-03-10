@@ -11,6 +11,10 @@ import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProdu
 import { Order } from "./types/Cart/Order";
 // import { GroupedProducts } from "./types/Product";
 import { User } from "./types/User/User";
+import {
+    UserLoginResponseSchema,
+    UserLoginSchemaInterface,
+} from "../schemas/Auth";
 
 // @ts-nocheck
 const baseQuery = fetchBaseQuery({
@@ -147,7 +151,10 @@ export const apiSlice = createApi({
         }),
 
         // Authorization API Routes [ 1. /auth  2. /login  3. /register]
-        login: builder.mutation<unknown, User>({
+        login: builder.mutation<
+            UserLoginResponseSchema,
+            UserLoginSchemaInterface
+        >({
             query: (user) => ({
                 url: `/auth/login`,
                 method: "POST",

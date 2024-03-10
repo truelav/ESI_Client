@@ -24,10 +24,6 @@ export interface ProductsAPIData extends ProductSchema {
     categories: filterCategory[];
 }
 
-export interface ProductImage {
-    link: "string";
-}
-
 export enum ProductView {
     BIG = "BIG",
     SMALL = "SMALL",

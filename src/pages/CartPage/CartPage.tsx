@@ -8,7 +8,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { CartProductList } from "../../entities/Cart/ui/cartProductList/CartProductList";
-import { CartOrderSummary } from "../../entities/Cart/ui/cartSummary/cartSummary";
+import { CartOrderSummary } from "../../entities/Cart/ui/cartSummary/CartSummary";
 import { PlaceOrderFeature } from "../../features/cart/PlaceOrderFeatures/PlaceOrderFeature";
 
 const CartPage = () => {

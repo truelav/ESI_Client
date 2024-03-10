@@ -14,7 +14,6 @@ const ProductList = (props: {
     searchTerm: string;
 }) => {
     const { products, searchTerm } = props;
-
     const selectedCategories = useSelector((state) => state.filter.categories);
     const selectedSubCategories = useSelector(
         (state) => state.filter.subcategories

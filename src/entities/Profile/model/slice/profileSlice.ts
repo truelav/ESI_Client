@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { OrderSchema, ProfileSchema } from "../types/ProfileSchema";
 import { UserSchema } from "../../../User/model/types/UserSchema";
-import { CartSchema } from "../../../Cart/model/types/CartSchema";
+import { ProductSchema } from "../../../Product/model/types/productSchema";
 
 const initialState: ProfileSchema = {
     user: null,
@@ -22,7 +22,7 @@ const profileSlice = createSlice({
         setAuthenticated(state, action: PayloadAction<boolean>) {
             state.isAuthenticated = action.payload;
         },
-        addToCart(state, action: PayloadAction<CartSchema>) {
+        addToCart(state, action: PayloadAction<ProductSchema>) {
             if (!state.cart.products.includes(action.payload)) {
                 state.cart.products.push(action.payload);
             }
@@ -37,7 +37,7 @@ const profileSlice = createSlice({
             state.cart.products = [];
         },
         addOrder(state, action: PayloadAction<OrderSchema>) {
-            state.orders.push(action.payload);
+            state.user.orders.push(action.payload);
         },
     },
 });
