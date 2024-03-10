@@ -4,31 +4,22 @@ import { SignupUserType } from "../../components/forms/SignupForm/model/types";
 import {
     ProductSchema,
     ProductsAPIData,
-    GroupedProducts,
 } from "../../entities/Product/model/types/productSchema";
-import { UserData } from "../../entities/Profile/model/types/ProfileSchema";
 import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
 import { Order } from "./types/Cart/Order";
-// import { GroupedProducts } from "./types/Product";
 import { User } from "./types/User/User";
 import {
     UserLoginResponseSchema,
     UserLoginSchemaInterface,
 } from "../schemas/Auth";
+import { UserSchema } from "../../entities/User/model/types/UserSchema";
+import { ProductsBrandedSchemaInterface } from "../schemas/Product";
 
 // @ts-nocheck
 const baseQuery = fetchBaseQuery({
     baseUrl: "http://localhost:3000/api",
     // baseUrl: "https://esi-api-v1.onrender.com/api",
     credentials: "include",
-    // prepareHeaders: (headers, { getState }) => {
-    //   const token = getState().auth.token;
-
-    //   if (token) {
-    //     headers.set("authorization", `Bearer ${token}`);
-    //   }
-    //   return headers;
-    // },
 });
 
 export const apiSlice = createApi({
@@ -41,7 +32,10 @@ export const apiSlice = createApi({
             providesTags: ["Product"],
         }),
 
-        getGroupedProducts: builder.query<GroupedProducts[], void>({
+        getGroupedProducts: builder.query<
+            ProductsBrandedSchemaInterface[],
+            void
+        >({
             query: () => `/products/brandedProducts`,
             providesTags: ["Product"],
         }),
@@ -112,7 +106,7 @@ export const apiSlice = createApi({
             providesTags: ["User"],
         }),
 
-        getUserProfile: builder.query<UserData, string>({
+        getUserProfile: builder.query<UserSchema, string>({
             query: (id) => `/auth/users/${id}`,
         }),
 
@@ -177,7 +171,10 @@ export const apiSlice = createApi({
         }),
 
         // Presentation API Routes
-        getPresentationProducts: builder.query<GroupedProducts[], void>({
+        getPresentationProducts: builder.query<
+            ProductsBrandedSchemaInterface[],
+            void
+        >({
             query: () => `/presentation/products`,
             providesTags: [{ type: "Product", id: "List" }],
         }),

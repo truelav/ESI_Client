@@ -1,4 +1,4 @@
-import { CartSchema } from "../../../Cart/model/types/cartSchema";
+import { CartSchema } from "../../../Cart/model/types/CartSchema";
 import { ProductSchema } from "../../../Product/model/types/productSchema";
 import { UserSchema } from "../../../User/model/types/UserSchema";
 

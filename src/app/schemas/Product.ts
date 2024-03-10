@@ -20,7 +20,12 @@ export interface ProductFilterSchemaInterface {
     subcategories: string[];
 }
 
-export interface ProductsAPIData extends ProductSchemaInterface {
+export interface ProductsAPIData {
     allProducts: ProductSchemaInterface[] | [];
     categories: ProductFilterSchemaInterface[] | [];
+}
+
+export interface ProductsBrandedSchemaInterface {
+    category: string;
+    products: ProductSchemaInterface[];
 }

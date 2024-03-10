@@ -165,7 +165,7 @@ export const SignupForm = () => {
                                     <Button
                                         mt={4}
                                         colorScheme="teal"
-                                        isLoading={isSubmitting}
+                                        isLoading={isLoadingSignup}
                                         disabled={isSubmitting}
                                         type="submit"
                                     >
