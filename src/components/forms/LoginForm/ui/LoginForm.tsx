@@ -12,6 +12,8 @@ import { loginInitialValues } from "../model/loginInitialValues";
 import ErrorText from "../../../../shared/ui/Error/ErrorText";
 import { UserLoginSchemaInterface } from "../../../../app/schemas/Auth";
 
+import "../../SignupForm/ui/SignupStyle.css";
+
 export function LoginForm() {
     const [
         login,

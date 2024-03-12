@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignupUserType } from "../../components/forms/SignupForm/model/types";
 import {
@@ -15,7 +14,6 @@ import {
 import { UserSchema } from "../../entities/User/model/types/UserSchema";
 import { ProductsBrandedSchemaInterface } from "../schemas/Product";
 
-// @ts-nocheck
 const baseQuery = fetchBaseQuery({
     baseUrl: "http://localhost:3000/api",
     // baseUrl: "https://esi-api-v1.onrender.com/api",
@@ -26,7 +24,6 @@ export const apiSlice = createApi({
     baseQuery,
     tagTypes: ["Product", "User", "Order", "Profile"],
     endpoints: (builder) => ({
-        // Products API Routes [ 1. /products  2. /products/:id]
         getAllProducts: builder.query<ProductsAPIData, void>({
             query: () => `/products`,
             providesTags: ["Product"],
@@ -143,8 +140,6 @@ export const apiSlice = createApi({
                 body: id,
             }),
         }),
-
-        // Authorization API Routes [ 1. /auth  2. /login  3. /register]
         login: builder.mutation<
             UserLoginResponseSchema,
             UserLoginSchemaInterface
@@ -169,8 +164,6 @@ export const apiSlice = createApi({
                 body: { ...user },
             }),
         }),
-
-        // Presentation API Routes
         getPresentationProducts: builder.query<
             ProductsBrandedSchemaInterface[],
             void
@@ -219,8 +212,6 @@ export const apiSlice = createApi({
                 formData: true,
             }),
         }),
-
-        //Orders
         getAllOrders: builder.query<Order, void>({
             query: () => `/orders`,
             providesTags: ["Order"],
