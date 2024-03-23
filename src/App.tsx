@@ -7,10 +7,10 @@ import {
 import { Suspense, lazy } from "react";
 
 // LAYOUTS
-import MainLayout from "./components/layouts/main";
-import DashboardLayout from "./components/layouts/dashboard";
-import ProductsLayout from "./components/layouts/userProducts";
-import ProfileLayout from "./components/layouts/profile";
+const MainLayout = lazy(() => import("./components/layouts/main"));
+const DashboardLayout = lazy(() => import("./components/layouts/dashboard"));
+const ProductsLayout = lazy(() => import("./components/layouts/userProducts"));
+const ProfileLayout = lazy(() => import("./components/layouts/profile"));
 
 // PAGES
 const Home = lazy(() => import("./pages/HomePage"));
@@ -33,7 +33,6 @@ const DashProductDetailsPage = lazy(
             "./pages/DashboardPage/DashProductDetailsPage/DashProductDetailsPage"
         )
 );
-
 const DashAddSingleProduct = lazy(
     () =>
         import(
