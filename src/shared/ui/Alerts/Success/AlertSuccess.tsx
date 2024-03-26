@@ -1,17 +1,24 @@
-import { Alert, AlertIcon, AlertTitle, Box, AlertDescription, CloseButton } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    Box,
+    AlertDescription,
+    CloseButton,
+} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-interface AlertProps {
-    isOpen: boolean
-    setShowSuccessAlert: (arg: boolean) => void
+export interface AlertProps {
+    isOpen: boolean;
+    setShowSuccessAlert: (arg: boolean) => void;
 }
 
 export const AlertSuccess = ({ isOpen, setShowSuccessAlert }: AlertProps) => {
-    let content 
+    let content = <></>;
 
-    if(isOpen){
+    if (isOpen) {
         content = (
-            <Alert status='success'>
+            <Alert status="success">
                 <AlertIcon />
                 <Box>
                     <AlertTitle>Success!</AlertTitle>
@@ -21,16 +28,16 @@ export const AlertSuccess = ({ isOpen, setShowSuccessAlert }: AlertProps) => {
                     </AlertDescription>
                 </Box>
                 <CloseButton
-                    alignSelf='flex-start'
-                    position='relative'
+                    alignSelf="flex-start"
+                    position="relative"
                     right={-1}
                     top={-1}
                     onClick={() => setShowSuccessAlert(false)}
                 />
             </Alert>
-        )
+        );
     } else {
-        content = <></>
+        content = <></>;
     }
-    return (<>{content}</>) 
-}
+    return <>{content}</>;
+};
