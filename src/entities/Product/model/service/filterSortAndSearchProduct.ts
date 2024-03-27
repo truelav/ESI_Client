@@ -1,11 +1,11 @@
-import { Product } from "../types/productSchema";
+import { ProductSchema } from "../types/productSchema";
 
 export const updateProductsBySearchTerm = (
-    products: Product[],
+    products: ProductSchema[],
     searchTerm: string
 ) => {
     const filteredProducts = products.filter(
-        (product: Product) =>
+        (product: ProductSchema) =>
             product.description
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase()) ||
@@ -15,22 +15,22 @@ export const updateProductsBySearchTerm = (
 };
 
 export const updateProductsByFilter = (
-    products: Product[],
+    products: ProductSchema[],
     selectedFilters: string[]
 ) => {
-    const filteredProducts = products.filter((product: Product) =>
+    const filteredProducts = products.filter((product: ProductSchema) =>
         selectedFilters.includes(product.subcategory)
     );
     return filteredProducts;
 };
 
 export const updateProductsByFilterCategoryAndSubcategory = (
-    products: Product[],
+    products: ProductSchema[],
     selectedCategories,
     selectedSubcategories
 ) => {
     const filteredProducts = products.filter(
-        (product: Product) =>
+        (product: ProductSchema) =>
             selectedCategories.includes(product.category) ||
             selectedSubcategories.includes(product.subcategory)
     );
@@ -39,11 +39,14 @@ export const updateProductsByFilterCategoryAndSubcategory = (
     return filteredProducts;
 };
 
-export const updateProductsBySort = (products: Product[], selectedSort) => {
+export const updateProductsBySort = (
+    products: ProductSchema[],
+    selectedSort
+) => {
     const filteredProducts = [...products];
     const sortBy: string = selectedSort.name;
 
-    filteredProducts.sort((a: Product, b: Product) => {
+    filteredProducts.sort((a: ProductSchema, b: ProductSchema) => {
         if (selectedSort.ascending) {
             return a[sortBy] > b[sortBy] ? 1 : -1;
         } else {

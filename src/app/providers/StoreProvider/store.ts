@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "./api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import authSlice from "../features/auth/slice/authSlice";
-import cartSlice from "../entities/Cart/model/slice/cartSlice";
-import productSlice from "../entities/Product/model/slice/productSlice";
-import profileSlice from "../entities/Profile/model/slice/profileSlice";
-import filterSlice from "../features/products/FilterProducts/model/slice/filterSlice";
-import sortSlice from "../features/products/SortProducts/model/slice/sortSlice";
-import editSingleProductSlice from "../features/products/EditSingleProduct/model/slice/editSingleProductSlice";
+import { apiSlice } from "../../api/apiSlice";
+import authSlice from "../../../features/auth/slice/authSlice";
+import cartSlice from "../../../entities/Cart/model/slice/cartSlice";
+import productSlice from "../../../entities/Product/model/slice/productSlice";
+import profileSlice from "../../../entities/Profile/model/slice/profileSlice";
+import filterSlice from "../../../features/products/FilterProducts/model/slice/filterSlice";
+import sortSlice from "../../../features/products/SortProducts/model/slice/sortSlice";
+import editSingleProductSlice from "../../../features/products/EditSingleProduct/model/slice/editSingleProductSlice";
+
+// console.log(process.env);
 
 export const store = configureStore({
     reducer: {

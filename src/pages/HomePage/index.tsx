@@ -6,16 +6,8 @@ import {
     Heading,
     Highlight,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 export default function Home() {
-    useEffect(() => {
-        const randomBinary = Math.round(Math.random());
-        if (randomBinary === 1) {
-            throw new Error("Random Error Generated");
-        }
-    }, []);
-
     return (
         <Container
             maxW="full"

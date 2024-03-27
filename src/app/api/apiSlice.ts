@@ -5,13 +5,12 @@ import {
     ProductsAPIData,
 } from "../../entities/Product/model/types/productSchema";
 import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
-import { Order } from "./types/Cart/Order";
-import { User } from "./types/User/User";
+import { Order } from "../schemas/Cart";
+import { UserSchemaInterface } from "../schemas/User";
 import {
     UserLoginResponseSchema,
     UserLoginSchemaInterface,
 } from "../schemas/Auth";
-import { UserSchema } from "../../entities/User/model/types/UserSchema";
 import { ProductsBrandedSchemaInterface } from "../schemas/Product";
 
 const baseQuery = fetchBaseQuery({
@@ -98,16 +97,16 @@ export const apiSlice = createApi({
         }),
 
         // User API Routes [ 1. /auth  2. /login  3. /register]
-        getAllUsers: builder.query<User, void>({
+        getAllUsers: builder.query<UserSchemaInterface, void>({
             query: () => `/auth/users`,
             providesTags: ["User"],
         }),
 
-        getUserProfile: builder.query<UserSchema, string>({
+        getUserProfile: builder.query<UserSchemaInterface, string>({
             query: (id) => `/auth/users/${id}`,
         }),
 
-        addUser: builder.mutation<User, User>({
+        addUser: builder.mutation<UserSchemaInterface, UserSchemaInterface>({
             query: (user) => ({
                 url: `/auth/register`,
                 method: "POST",
@@ -116,7 +115,7 @@ export const apiSlice = createApi({
             invalidatesTags: ["User"],
         }),
 
-        editUser: builder.mutation<User, User>({
+        editUser: builder.mutation<UserSchemaInterface, UserSchemaInterface>({
             query: (user) => ({
                 url: `/auth/users`,
                 method: "PUT",
@@ -133,7 +132,7 @@ export const apiSlice = createApi({
             invalidatesTags: ["User"],
         }),
 
-        activateDeactivateUser: builder.mutation<User, string>({
+        activateDeactivateUser: builder.mutation<UserSchemaInterface, string>({
             query: (id) => ({
                 url: `/auth/users/activate/${id}`,
                 method: "PUT",
@@ -150,7 +149,7 @@ export const apiSlice = createApi({
                 body: { ...user },
             }),
         }),
-        logout: builder.mutation<unknown, User>({
+        logout: builder.mutation<unknown, UserSchemaInterface>({
             query: (user) => ({
                 url: `/auth/logout`,
                 method: "POST",

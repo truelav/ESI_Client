@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { store } from "./app/store";
+import { store } from "./app/providers/StoreProvider/store";
 import { Provider } from "react-redux";
 import { ChakraProvider } from "@chakra-ui/react";
 import { CookiesProvider } from "react-cookie";

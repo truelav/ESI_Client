@@ -29,3 +29,16 @@ export interface ProductsBrandedSchemaInterface {
     category: string;
     products: ProductSchemaInterface[];
 }
+
+export interface ProductSliceMetadataSchema {
+    totalProducts: number;
+    totalBrands: number;
+    totalCategories: number;
+}
+
+export interface ProductSliceSchema {
+    products: ProductSchemaInterface[] | [];
+    selectedProductIds: [];
+    categoryProducts: [];
+    metadataProducts: ProductSliceMetadataSchema;
+}

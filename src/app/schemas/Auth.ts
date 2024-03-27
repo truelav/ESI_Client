@@ -23,3 +23,8 @@ export interface UserLoginResponseSchema {
     userDto: UserDtoSchemaInterface;
     accessToken: UserAccessTokenSchemaInterface;
 }
+
+export interface AuthSliceSchema {
+    accessToken: UserAccessTokenSchemaInterface | null;
+    profile: UserDtoSchemaInterface | null;
+}
