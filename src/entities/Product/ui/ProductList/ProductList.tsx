@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-
 import { ProductSchema } from "../../model/types/productSchema";
 import { ProductListItem } from "../ProductListItem/ProductListItem";
 import {
@@ -8,13 +7,16 @@ import {
     updateProductsBySort,
     updateProductsByFilterCategoryAndSubcategory,
 } from "../../model/service/filterSortAndSearchProduct";
+import { StateSchema } from "../../../../app/providers/StoreProvider/StateSchema";
 
 const ProductList = (props: {
-    products: ProductSchema[] | never[];
+    products: ProductSchema[] | [];
     searchTerm: string;
 }) => {
     const { products, searchTerm } = props;
-    const selectedCategories = useSelector((state) => state.filter.categories);
+    const selectedCategories = useSelector(
+        (state: StateSchema) => state.filter.categories
+    );
     const selectedSubCategories = useSelector(
         (state) => state.filter.subcategories
     );

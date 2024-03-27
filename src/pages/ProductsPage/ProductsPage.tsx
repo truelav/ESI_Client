@@ -1,34 +1,28 @@
 import { useState, useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { Grid, GridItem } from "@chakra-ui/react";
 
-import { useGetAllProductsQuery } from "../../app/api/apiSlice";
+import { useGetAllProductsQuery } from "../../app/api/productApiSlice";
 import { setFilters } from "../../features/products/FilterProducts/model/slice/filterSlice";
 
 import { ProductSearchBar } from "../../entities/Product/ui/ProductSearchBar/ProductSearchBar";
 import { ProductSortBar } from "../../entities/Product/ui/ProductSortBar/ProductSortBar";
-import ProductList  from "../../entities/Product/ui/ProductList/ProductList";
+import ProductList from "../../entities/Product/ui/ProductList/ProductList";
 import FilterBar from "../../features/products/FilterProducts/ui/FilterBar/FilterBar";
 
 const ProductsPage = () => {
-    const dispatch = useDispatch()
-    const {
-        data,
-        isLoading,
-        isSuccess,
-        isError,
-        error,
-    } = useGetAllProductsQuery();
+    const dispatch = useDispatch();
+    const { data, isLoading, isSuccess, isError, error } =
+        useGetAllProductsQuery();
 
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        if(data){
-            const filterList = data.categories
-            dispatch(setFilters(filterList))
+        if (data) {
+            const filterList = data.categories;
+            dispatch(setFilters(filterList));
         }
-    },[data, dispatch])
-
+    }, [data, dispatch]);
 
     let content = <div></div>;
 
@@ -47,15 +41,21 @@ const ProductsPage = () => {
                     <FilterBar />
                 </GridItem>
                 <GridItem colSpan={9}>
-                    <ProductSearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                    <ProductSearchBar
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                    />
                     <ProductSortBar />
-                    <ProductList products={data.allProducts} searchTerm={searchTerm} />
+                    <ProductList
+                        products={data.allProducts}
+                        searchTerm={searchTerm}
+                    />
                 </GridItem>
             </Grid>
         );
     }
 
-    return content
+    return content;
 };
 
 export default ProductsPage;

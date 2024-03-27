@@ -1,17 +1,30 @@
 export interface ProductSchema {
+    // _id: string;
+    // brand: string;
+    // updatedAt: string;
+    // description: string;
+    // category: string;
+    // subcategory: string;
+    // price?: string;
+    // quantity?: number;
+    // images?: string | undefined;
+    // model: string;
+    // upc: string;
+    // isActive: boolean;
     _id: string;
-    name: string;
+    model: string;
     brand: string;
-    updatedAt: string;
-    description: string;
     category: string;
     subcategory: string;
-    price?: string;
-    quantity?: number;
-    images?: string | undefined;
-    model: string;
-    upc: string;
+    createdAt: string;
+    description: string;
+    features: string[];
+    images: string;
     isActive: boolean;
+    price: number;
+    quantity: number;
+    upc: string;
+    updatedAt: string;
 }
 
 export interface filterCategory {

@@ -1,17 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignupUserType } from "../../components/forms/SignupForm/model/types";
-import {
-    ProductSchema,
-    ProductsAPIData,
-} from "../../entities/Product/model/types/productSchema";
-import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
 import { Order } from "../schemas/Cart";
 import { UserSchemaInterface } from "../schemas/User";
+import { ProductsBrandedSchemaInterface } from "../schemas/Product";
+import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
+import { ProductSchema } from "../../entities/Product/model/types/productSchema";
 import {
     UserLoginResponseSchema,
     UserLoginSchemaInterface,
 } from "../schemas/Auth";
-import { ProductsBrandedSchemaInterface } from "../schemas/Product";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: "http://localhost:3000/api",
@@ -23,22 +20,22 @@ export const apiSlice = createApi({
     baseQuery,
     tagTypes: ["Product", "User", "Order", "Profile"],
     endpoints: (builder) => ({
-        getAllProducts: builder.query<ProductsAPIData, void>({
-            query: () => `/products`,
-            providesTags: ["Product"],
-        }),
+        // getAllProducts: builder.query<ProductsAPIData, void>({
+        //     query: () => `/products`,
+        //     providesTags: ["Product"],
+        // }),
 
-        getGroupedProducts: builder.query<
-            ProductsBrandedSchemaInterface[],
-            void
-        >({
-            query: () => `/products/brandedProducts`,
-            providesTags: ["Product"],
-        }),
+        // getGroupedProducts: builder.query<
+        //     ProductsBrandedSchemaInterface[],
+        //     void
+        // >({
+        //     query: () => `/products/brandedProducts`,
+        //     providesTags: ["Product"],
+        // }),
 
-        getSingleProduct: builder.query<ProductSchema, string | undefined>({
-            query: (id) => `/products/${id}`,
-        }),
+        // getSingleProduct: builder.query<ProductSchema, string | undefined>({
+        //     query: (id) => `/products/${id}`,
+        // }),
 
         addSingleProduct: builder.mutation({
             query: (product) => ({
@@ -236,15 +233,15 @@ export const apiSlice = createApi({
 });
 
 export const {
-    useGetAllProductsQuery,
-    useGetSingleProductQuery,
+    // useGetAllProductsQuery,
+    // useGetSingleProductQuery,
+    // useGetGroupedProductsQuery,
     useAddSingleProductMutation,
     useEditSingleProductMutation,
     useDeleteSingleProductMutation,
     useDeleteMultipleProductsMutation,
 
     useAddMultipleProductsMutation,
-    useGetGroupedProductsQuery,
 
     useGetAllUsersQuery,
     useAddUserMutation,
