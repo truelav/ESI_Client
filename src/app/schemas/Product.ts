@@ -36,9 +36,11 @@ export interface ProductSliceMetadataSchema {
     totalCategories: number;
 }
 
+export type SelectedProductIdsSchema = string[] | [];
+
 export interface ProductSliceSchema {
     products: ProductSchemaInterface[] | [];
-    selectedProductIds: [];
+    selectedProductIds: SelectedProductIdsSchema;
     categoryProducts: [];
     metadataProducts: ProductSliceMetadataSchema;
 }

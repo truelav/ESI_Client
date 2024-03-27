@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { Button, Text } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 
-import { Product } from "../../../entities/Product/model/types/productSchema";
+import { ProductSchema } from "../../../entities/Product/model/types/productSchema";
 import {
     selectAllProducts,
     deselectAllProducts,
@@ -19,7 +19,7 @@ export const DashProductsList = memo(() => {
 
     const [areAllProductsSelected, setAreAllProductsSelected] = useState(false);
     const allProductIds = data?.allProducts.map(
-        (product: Product) => product._id
+        (product: ProductSchema) => product._id
     );
     const handleToggleSelectAllProducts = () => {
         if (areAllProductsSelected) {
@@ -56,7 +56,7 @@ export const DashProductsList = memo(() => {
                     </Button>
                 )}
 
-                {data?.allProducts?.map((product: Product) => (
+                {data?.allProducts?.map((product: ProductSchema) => (
                     <ProductItem key={product._id} product={product} />
                 ))}
             </>

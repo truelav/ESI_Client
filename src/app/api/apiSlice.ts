@@ -2,7 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SignupUserType } from "../../components/forms/SignupForm/model/types";
 import { Order } from "../schemas/Cart";
 import { UserSchemaInterface } from "../schemas/User";
-import { ProductsBrandedSchemaInterface } from "../schemas/Product";
+import {
+    ProductsAPIData,
+    ProductsBrandedSchemaInterface,
+    SelectedProductIdsSchema,
+} from "../schemas/Product";
 import { FormDataProps } from "../../shared/ui/Modals/ImportProducts/ImportProductsModal";
 import { ProductSchema } from "../../entities/Product/model/types/productSchema";
 import {
@@ -20,10 +24,10 @@ export const apiSlice = createApi({
     baseQuery,
     tagTypes: ["Product", "User", "Order", "Profile"],
     endpoints: (builder) => ({
-        // getAllProducts: builder.query<ProductsAPIData, void>({
-        //     query: () => `/products`,
-        //     providesTags: ["Product"],
-        // }),
+        getAllProducts: builder.query<ProductsAPIData, void>({
+            query: () => `/products`,
+            providesTags: ["Product"],
+        }),
 
         // getGroupedProducts: builder.query<
         //     ProductsBrandedSchemaInterface[],
@@ -82,7 +86,7 @@ export const apiSlice = createApi({
 
         deleteMultipleProducts: builder.mutation<
             { success: boolean; productsIds: [] },
-            number
+            SelectedProductIdsSchema
         >({
             query: (productIds) => ({
                 url: `/products`,
@@ -233,7 +237,7 @@ export const apiSlice = createApi({
 });
 
 export const {
-    // useGetAllProductsQuery,
+    useGetAllProductsQuery,
     // useGetSingleProductQuery,
     // useGetGroupedProductsQuery,
     useAddSingleProductMutation,

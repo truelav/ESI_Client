@@ -26,5 +26,9 @@
         "outDir": "dist"
     },
     "include": ["src", "dist/App.js", "dist/main.js"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "baseUrl": ".",
+    "paths": {
+        "@app/*": ["src/*"]
+    }
 }
