@@ -51,7 +51,13 @@ const Template: Story<AlertProps> = (args) => (
     </Router>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-    isOpen: true,
+// export const Default = Template.bind({});
+// Default.args = {
+//     isOpen: true,
+// };
+
+export const Default = {
+    args: {
+        isOpen: true,
+    },
 };
