@@ -117,6 +117,8 @@ const router = createBrowserRouter(
     )
 );
 
+console.log(router);
+
 function App() {
     return (
         <Suspense fallback={<div>Loading Page...</div>}>
