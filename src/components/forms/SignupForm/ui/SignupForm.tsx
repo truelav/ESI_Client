@@ -12,7 +12,7 @@ import { useSignupMutation } from "../../../../app/api/apiSlice";
 import { FormResult } from "../../FormResult/FormResult";
 import { FormHeader } from "../../../../shared/ui/Forms/FormHeader/FormHeader";
 import { initialValues } from "../model/initialValues";
-import { validateSignupInput } from "../../../../shared/Validators";
+import { validateSignupInput } from "../../../../shared/utils/Validators";
 import ErrorText from "../../../../shared/ui/Error/ErrorText";
 
 import "./SignupStyle.css";

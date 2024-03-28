@@ -11,6 +11,7 @@ import {
 import { DashProductListHead } from "./DashProductListHead";
 import { useGetAllProductsQuery } from "../../../app/api/apiSlice";
 import { ProductItem } from "../../../shared/ui/Product/ProductItem/ProductItem";
+import DashProductListSkeleton from "../DashProductListSkeleton/DashProductListSkeleton";
 
 export const DashProductsList = memo(() => {
     const dispatch = useDispatch();
@@ -18,9 +19,11 @@ export const DashProductsList = memo(() => {
         useGetAllProductsQuery();
 
     const [areAllProductsSelected, setAreAllProductsSelected] = useState(false);
+
     const allProductIds = data?.allProducts.map(
         (product: ProductSchema) => product._id
     );
+
     const handleToggleSelectAllProducts = () => {
         if (areAllProductsSelected) {
             dispatch(deselectAllProducts());
@@ -34,7 +37,7 @@ export const DashProductsList = memo(() => {
     let content = <div></div>;
 
     if (isLoading) {
-        content = <>Loading...</>;
+        content = <DashProductListSkeleton />;
     }
 
     if (isError) {
@@ -44,18 +47,6 @@ export const DashProductsList = memo(() => {
     if (isSuccess) {
         content = (
             <>
-                <DashProductListHead />
-
-                {data?.allProducts?.length > 0 && (
-                    <Button onClick={() => handleToggleSelectAllProducts()}>
-                        <Text>
-                            {areAllProductsSelected
-                                ? `Deselect All Products`
-                                : `Select All Products`}
-                        </Text>
-                    </Button>
-                )}
-
                 {data?.allProducts?.map((product: ProductSchema) => (
                     <ProductItem key={product._id} product={product} />
                 ))}
@@ -63,5 +54,21 @@ export const DashProductsList = memo(() => {
         );
     }
 
-    return <>{content}</>;
+    return (
+        <>
+            <DashProductListHead />
+
+            {data?.allProducts?.length > 0 && (
+                <Button onClick={() => handleToggleSelectAllProducts()}>
+                    <Text>
+                        {areAllProductsSelected
+                            ? `Deselect All Products`
+                            : `Select All Products`}
+                    </Text>
+                </Button>
+            )}
+
+            {content}
+        </>
+    );
 });

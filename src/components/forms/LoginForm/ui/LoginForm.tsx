@@ -7,7 +7,7 @@ import { useLoginMutation } from "../../../../app/api/apiSlice";
 import { FormResult } from "../../FormResult/FormResult";
 import { setCredentials } from "../../../../features/auth/slice/authSlice";
 import { FormHeader } from "../../../../shared/ui/Forms/FormHeader/FormHeader";
-import { validateLoginInput } from "../../../../shared/Validators";
+import { validateLoginInput } from "../../../../shared/utils/Validators";
 import { loginInitialValues } from "../model/loginInitialValues";
 import ErrorText from "../../../../shared/ui/Error/ErrorText";
 import { UserLoginSchemaInterface } from "../../../../app/schemas/Auth";
@@ -88,9 +88,8 @@ export function LoginForm() {
                                 actions
                             ) => {
                                 try {
-                                    const response = await login(
-                                        values
-                                    ).unwrap();
+                                    const response =
+                                        await login(values).unwrap();
                                     handleLoginClick(response);
                                     actions.resetForm();
                                     navigate("/products");

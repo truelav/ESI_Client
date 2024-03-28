@@ -25,30 +25,31 @@ export const apiSlice = createApi({
     tagTypes: ["Product", "User", "Order", "Profile"],
     endpoints: (builder) => ({
         getAllProducts: builder.query<ProductsAPIData, void>({
-            query: () => `/products`,
             providesTags: ["Product"],
+            query: () => `/products`,
         }),
 
-        // getGroupedProducts: builder.query<
-        //     ProductsBrandedSchemaInterface[],
-        //     void
-        // >({
-        //     query: () => `/products/brandedProducts`,
-        //     providesTags: ["Product"],
-        // }),
+        getGroupedProducts: builder.query<
+            ProductsBrandedSchemaInterface[],
+            void
+        >({
+            providesTags: ["Product"],
+            query: () => `/products/brandedProducts`,
+        }),
 
-        // getSingleProduct: builder.query<ProductSchema, string | undefined>({
-        //     query: (id) => `/products/${id}`,
-        // }),
+        getSingleProduct: builder.query<ProductSchema, string | undefined>({
+            providesTags: ["Product"],
+            query: (id) => `/products/${id}`,
+        }),
 
         addSingleProduct: builder.mutation({
+            invalidatesTags: ["Product"],
             query: (product) => ({
                 url: `/products`,
                 method: "POST",
                 body: product,
                 formData: true,
             }),
-            invalidatesTags: ["Product"],
         }),
 
         addMultipleProducts: builder.mutation<unknown, FormDataProps>({
@@ -64,23 +65,24 @@ export const apiSlice = createApi({
             ProductSchema,
             Partial<ProductSchema> & Pick<ProductSchema, "_id">
         >({
+            invalidatesTags: ["Product"],
             query: (product) => ({
                 url: `/products/${product._id}`,
                 method: "PUT",
                 body: product,
                 formData: true,
             }),
-            invalidatesTags: ["Product"],
         }),
 
         deleteSingleProduct: builder.mutation<
             { success: boolean; id: string },
             string
         >({
+            invalidatesTags: ["Product"],
             query: (id) => ({
                 url: `/products/${id}`,
                 method: "DELETE",
-                providesTags: [{ type: "Products", id: "List" }],
+                // providesTags: [{ type: "Products", id: "List" }],
             }),
         }),
 
@@ -88,13 +90,13 @@ export const apiSlice = createApi({
             { success: boolean; productsIds: [] },
             SelectedProductIdsSchema
         >({
+            invalidatesTags: ["Product"],
             query: (productIds) => ({
                 url: `/products`,
                 method: "DELETE",
                 body: productIds,
-                providesTags: [{ type: "Product", id: "List" }],
+                // providesTags: [{ type: "Product", id: "List" }],
             }),
-            invalidatesTags: [{ type: "Product", id: "List" }],
         }),
 
         // User API Routes [ 1. /auth  2. /login  3. /register]
@@ -238,8 +240,8 @@ export const apiSlice = createApi({
 
 export const {
     useGetAllProductsQuery,
-    // useGetSingleProductQuery,
-    // useGetGroupedProductsQuery,
+    useGetSingleProductQuery,
+    useGetGroupedProductsQuery,
     useAddSingleProductMutation,
     useEditSingleProductMutation,
     useDeleteSingleProductMutation,
