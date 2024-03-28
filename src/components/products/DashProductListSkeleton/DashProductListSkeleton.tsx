@@ -1,10 +1,5 @@
 import { FC } from "react";
-import {
-    Skeleton,
-    Stack,
-    SkeletonCircle,
-    SkeletonText,
-} from "@chakra-ui/react";
+import { Skeleton, Stack } from "@chakra-ui/react";
 
 interface DashProductListSkeletonProps {}
 

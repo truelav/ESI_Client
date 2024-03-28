@@ -5,6 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import PageSkeleton from "./shared/ui/Skeleton/PageSkeleton";
 
 // LAYOUTS
 const MainLayout = lazy(() => import("./components/layouts/main"));
@@ -121,8 +122,8 @@ console.log(router);
 
 function App() {
     return (
-        <Suspense fallback={<div>Loading Page...</div>}>
-            <RouterProvider router={router} />;
+        <Suspense fallback={<PageSkeleton />}>
+            <RouterProvider router={router} />
         </Suspense>
     );
 }
