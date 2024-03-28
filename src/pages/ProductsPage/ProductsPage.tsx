@@ -28,10 +28,12 @@ const ProductsPage = () => {
 
     if (isLoading) {
         content = <>Loading Products...</>;
+        console.log("Loading Products...");
     }
 
     if (isError) {
         content = <>No Products Found : {JSON.stringify(error)}</>;
+        console.log(error);
     }
 
     if (isSuccess) {
@@ -53,6 +55,7 @@ const ProductsPage = () => {
                 </GridItem>
             </Grid>
         );
+        console.log("Product Loaded!");
     }
 
     return content;

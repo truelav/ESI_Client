@@ -110,7 +110,6 @@ const router = createBrowserRouter(
             <Route path="signup" element={<SignupPage />} />
 
             <Route path="contact" element={<ContactPage />} />
-
             <Route path="cart" element={<CartPage />} />
 
             <Route path="*" element={<NotFound />} />
