@@ -18,9 +18,11 @@ const ProductList = (props: {
         (state: StateSchema) => state.filter.categories
     );
     const selectedSubCategories = useSelector(
-        (state) => state.filter.subcategories
+        (state: StateSchema) => state.filter.subcategories
     );
-    const selectedSort = useSelector((state) => state.sort.selectedSort);
+    const selectedSort = useSelector(
+        (state: StateSchema) => state.sort.selectedSort
+    );
 
     const filteredAndSortedProducts = useMemo(() => {
         let filteredProducts = products || [];

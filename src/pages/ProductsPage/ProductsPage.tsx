@@ -9,6 +9,7 @@ import { ProductSearchBar } from "../../entities/Product/ui/ProductSearchBar/Pro
 import { ProductSortBar } from "../../entities/Product/ui/ProductSortBar/ProductSortBar";
 import ProductList from "../../entities/Product/ui/ProductList/ProductList";
 import FilterBar from "../../features/products/FilterProducts/ui/FilterBar/FilterBar";
+import DashProductListSkeleton from "../../components/products/DashProductListSkeleton/DashProductListSkeleton";
 
 const ProductsPage = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const ProductsPage = () => {
     let content = <div></div>;
 
     if (isLoading) {
-        content = <>Loading Products...</>;
+        content = <DashProductListSkeleton />;
         console.log("Loading Products...");
     }
 
@@ -38,27 +39,26 @@ const ProductsPage = () => {
 
     if (isSuccess) {
         content = (
-            <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-                <GridItem colSpan={3}>
-                    <FilterBar />
-                </GridItem>
-                <GridItem colSpan={9}>
-                    <ProductSearchBar
-                        searchTerm={searchTerm}
-                        setSearchTerm={setSearchTerm}
-                    />
-                    <ProductSortBar />
-                    <ProductList
-                        products={data.allProducts}
-                        searchTerm={searchTerm}
-                    />
-                </GridItem>
-            </Grid>
+            <ProductList products={data.allProducts} searchTerm={searchTerm} />
         );
         console.log("Product Loaded!");
     }
 
-    return content;
+    return (
+        <Grid templateColumns="repeat(12, 1fr)" gap={4}>
+            <GridItem colSpan={3}>
+                <FilterBar />
+            </GridItem>
+            <GridItem colSpan={9}>
+                <ProductSearchBar
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
+                <ProductSortBar />
+                {content}
+            </GridItem>
+        </Grid>
+    );
 };
 
 export default ProductsPage;

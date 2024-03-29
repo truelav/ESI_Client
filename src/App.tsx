@@ -8,12 +8,39 @@ import { Suspense, lazy } from "react";
 import PageSkeleton from "./shared/ui/Skeleton/PageSkeleton";
 
 // LAYOUTS
-const MainLayout = lazy(() => import("./components/layouts/main"));
-const DashboardLayout = lazy(() => import("./components/layouts/dashboard"));
-const ProductsLayout = lazy(() => import("./components/layouts/userProducts"));
-const ProfileLayout = lazy(() => import("./components/layouts/profile"));
+import MainLayout from "./components/layouts/main";
+import DashboardLayout from "./components/layouts/dashboard";
+import ProductsLayout from "./components/layouts/userProducts";
+import ProfileLayout from "./components/layouts/profile";
+
+// const MainLayout = lazy(() => import("./components/layouts/main"));
+// const DashboardLayout = lazy(() => import("./components/layouts/dashboard"));
+// const ProductsLayout = lazy(() => import("./components/layouts/userProducts"));
+// const ProfileLayout = lazy(() => import("./components/layouts/profile"));
 
 // PAGES
+// import Home from "./pages/HomePage";
+// import ContactPage from "./pages/ContactPage";
+// import LoginPage from "./pages/LoginPage";
+
+// import Dashboard from "./pages/DashboardPage";
+// import DashUsersPage from "./pages/DashboardPage/DashUsersPage/DashUsersPage";
+// import DashProductsPage from "./pages/DashboardPage/DashProductsPage/DashProductsPage";
+// import DashProductDetailsPage from "./pages/DashboardPage/DashProductDetailsPage/DashProductDetailsPage";
+// import DashAddSingleProduct from "./pages/DashboardPage/DashAddSingleProduct/DashAddSingleProduct";
+// import DashOrders from "./pages/DashboardPage/DashOrders/DashOrdersPage";
+// import DashInventory from "./pages/DashboardPage/DashInventory/DashInventory";
+// import DashPresentationPage from "./pages/DashboardPage/DashPresentationsPage/DashPresentationPage";
+
+// import ProductsPage from "./pages/ProductsPage/ProductsPage";
+// import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+
+// import CartPage from "./pages/CartPage/CartPage";
+// import ProfilePage from "./pages/ProfilePage/ProfilePage";
+// import SignupPage from "./pages/SignupPage/SignupPage";
+
+// import NotFound from "./pages/NotFoundPage";
+
 const Home = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const Dashboard = lazy(() => import("./pages/DashboardPage"));

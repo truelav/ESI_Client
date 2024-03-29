@@ -4,8 +4,8 @@ const filterSlice = createSlice({
     name: "filter",
     initialState: {
         filters: [],
-        categories: [], 
-        subcategories: [] 
+        categories: [],
+        subcategories: [],
     },
     reducers: {
         setFilters: (state, action) => {
@@ -13,38 +13,42 @@ const filterSlice = createSlice({
         },
         viewAllCategories: (state) => {
             state.categories = [];
-            state.subcategories = []
+            state.subcategories = [];
         },
         toggleCategory(state, action) {
             const { category, subcategories } = action.payload;
             if (state.categories.includes(category)) {
-              // Deselect category and its subcategories
-              state.categories = state.categories.filter(cat => cat !== category);
-              state.subcategories = state.subcategories.filter(subcat => !subcategories.includes(subcat));
+                // Deselect category and its subcategories
+                state.categories = state.categories.filter(
+                    (cat) => cat !== category
+                );
+                state.subcategories = state.subcategories.filter(
+                    (subcat) => !subcategories.includes(subcat)
+                );
             } else {
-              // Select category and its subcategories
-              state.categories.push(category);
-              state.subcategories.push(...subcategories);
+                // Select category and its subcategories
+                state.categories.push(category);
+                state.subcategories.push(...subcategories);
             }
-          },
-          toggleSubcategory(state, action) {
-            const { category, subcategory } = action.payload;
+        },
+        toggleSubcategory(state, action) {
+            const { subcategory } = action.payload;
             if (state.subcategories.includes(subcategory)) {
-              state.subcategories = state.subcategories.filter(subcat => subcat !== subcategory);
+                state.subcategories = state.subcategories.filter(
+                    (subcat) => subcat !== subcategory
+                );
             } else {
-              state.subcategories.push(subcategory);
+                state.subcategories.push(subcategory);
             }
-          }
+        },
     },
 });
 
-export const { 
-
+export const {
     setFilters,
     viewAllCategories,
     toggleCategory,
-    toggleSubcategory
-
+    toggleSubcategory,
 } = filterSlice.actions;
-    
+
 export default filterSlice.reducer;
