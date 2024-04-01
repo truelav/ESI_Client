@@ -39,6 +39,13 @@ const userApiSlice = apiSlice.injectEndpoints({
                 body: id,
             }),
         }),
+        activateDeactivateUser: build.mutation<UserSchemaInterface, string>({
+            query: (id) => ({
+                url: `/auth/users/activate/${id}`,
+                method: "PUT",
+                body: id,
+            }),
+        }),
     }),
 });
 
