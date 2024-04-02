@@ -142,6 +142,7 @@ export const apiSlice = createApi({
                 body: id,
             }),
         }),
+
         login: builder.mutation<
             UserLoginResponseSchema,
             UserLoginSchemaInterface
@@ -214,10 +215,6 @@ export const apiSlice = createApi({
                 formData: true,
             }),
         }),
-        getAllOrders: builder.query<Order, void>({
-            query: () => `/orders`,
-            providesTags: ["Order"],
-        }),
         placeOrder: builder.mutation<unknown, Order>({
             query: (order) => ({
                 url: `/orders`,
@@ -225,6 +222,11 @@ export const apiSlice = createApi({
                 body: order,
             }),
         }),
+        getAllOrders: builder.query<Order, void>({
+            query: () => `/orders`,
+            providesTags: ["Order"],
+        }),
+
         deleteOrders: builder.mutation<
             { success: boolean; id: string },
             string[]
